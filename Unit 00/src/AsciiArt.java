@@ -10,7 +10,7 @@ public class AsciiArt
 {
 	public static void main ( String[] args )
 	{
-		System.out.println("Leoanrd Fan \n\n" );
+		System.out.println("Leonard Fan \n\n" );
 		System.out.println("What type of ANIMAL YOU WILL DRAW" );
 		System.out.println("\n\n\n\n" );
 
