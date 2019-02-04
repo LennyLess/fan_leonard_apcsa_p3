@@ -1,9 +1,9 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
+//Name - Leonard Fan
+//Date - 1/31/19
+//Class - APCSA
 //Lab  -
 
 public class AsciiBox2
