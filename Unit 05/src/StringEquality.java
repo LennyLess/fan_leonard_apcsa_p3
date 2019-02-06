@@ -18,6 +18,7 @@ public class StringEquality
 
 	public StringEquality(String one, String two)
 	{
+		setWords(one, two);
 	}
 
 	public void setWords(String one, String two)
