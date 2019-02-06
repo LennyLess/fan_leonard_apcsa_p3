@@ -23,15 +23,23 @@ public class StringEquality
 
 	public void setWords(String one, String two)
 	{
+		wordOne = one;
+		wordTwo = two;
 	}
 
 	public boolean checkEquality( )
 	{
+		if (wordOne.compareTo(wordTwo) == 0 && wordOne.length()==wordTwo.length()) {
+			return true;
+		}
 		return false;
 	}
 
 	public String toString()
 	{
+		if (checkEquality() == true) {
+			return wordOne + " has the same letters as " + wordTwo + "\n";
+		}
 		return wordOne + " does not have the same letters as " + wordTwo + "\n";
 	}
 }
