@@ -8,15 +8,45 @@ public class Perfect
 {
    private int number;
 
-	//add constructors
 
-	//add a set method
+	public Perfect()
+	{
+	}
+
+	public Perfect(int x)
+	{
+		setNum(x);
+	}
+	
+	public void setNum(int x) {
+		number = x;
+	}
 
 	public boolean isPerfect()
 	{
+		int total = 0;
+		for (int i=1;i<number;i++) {
+			if (number%i == 0) {
+				total = total + i;
+			}
+			else {
+				
+			}
+		}
+		if (total == number) {
+			return true;
+		}
 		return false;
 	}
 
-	//add a toString	
+	public String toString()
+ 	{
+		if (isPerfect() == true) {
+			String output = number + " is perfect";
+			return output;
+		}
+		String output = number + " is not perfect";
+		return output;
+ 	}
 	
 }
