@@ -35,10 +35,14 @@ public class TriangleFive
 		String output="";
 		for (int i = amount; i > 0; i--) {
 			for (int a = amount ; a > amount - i ; a--) {
-				char newChar = (char)(letter + amount - a);
 				for (int b = amount; b > amount - a ; b--) {
+					if(letter + amount - a <= 90) {
+						output += (char)(letter + amount - a);
+					}
+					else {
+						output += (char)(letter + amount - a - 26);
+					}
 					
-					output += newChar;
 				}
 				output += " ";
 			}
