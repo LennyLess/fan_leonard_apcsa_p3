@@ -26,11 +26,11 @@ public class Shuffler {
 			values1[i] = i;
 			}
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
+			System.out.print("  " + j + ": ");
 			perfectShuffle(values1);
-			System.out.print("  " + j + ":");
-			for (int k = 0; k < values1.length; k++) {
-				System.out.print(" " + values1[k]);
-			}
+			//for (int k = 0; k < values1.length; k++) {
+			//	System.out.print(" " + values1[k]);
+			//}
 			System.out.println();
 		}
 		System.out.println();
@@ -42,12 +42,13 @@ public class Shuffler {
 			values2[i] = i;
 			}
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
+			System.out.print("  " + j + ": ");
 			selectionShuffle(values2);
-			System.out.print("  " + j + ":");
-			for (int k = 0; k < values2.length; k++) {
-				System.out.print(" " + values2[k]);
-			}
-			System.out.println();
+			
+			//for (int k = 0; k < values2.length; k++) {
+			//	System.out.print(" " + values2[k]);
+			//}
+			//System.out.println();
 		}
 		System.out.println();
 	}
@@ -61,6 +62,24 @@ public class Shuffler {
 	 */
 	public static void perfectShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[VALUE_COUNT];
+		int k = 0;
+		if (VALUE_COUNT % 2 == 0) {
+			for (int j = 0; j < (VALUE_COUNT / 2) ; j++) {
+				shuffled[j] = values[k];
+				k = k + 2;
+			}
+			k = 1;
+			for (int j = (VALUE_COUNT / 2); j < VALUE_COUNT; j++) {
+				shuffled[j] = values[k];
+				k = k + 2;
+			}
+		}
+		for (int i = 0; i < shuffled.length; i++) {
+			System.out.print(shuffled[i] + " ");
+		}
+		
+		
 	}
 
 	/**
@@ -76,5 +95,22 @@ public class Shuffler {
 	 */
 	public static void selectionShuffle(int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[VALUE_COUNT];
+		for (int k = VALUE_COUNT - 1 ; k >= 0; k-- ) {
+			int range = VALUE_COUNT;
+			int rand = (int)(Math.random()*range);
+			if (shuffled[rand] == 0) {
+				shuffled[rand] = values[k];
+				
+			}
+			else {
+				k = k + 1;
+			}
+			
+			
+		}
+		for (int i = 0; i < shuffled.length; i++) {
+			System.out.print(shuffled[i] + " ");
+		}
 	}
 }

@@ -33,16 +33,17 @@ public class Deck {
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		int num = 0;
+		cards = new Card[ ranks.length * suits.length ];
 		for (int i = 0; i < ranks.length; i++) {
 			for (int a = 0; a < suits.length; a++) {
-				for (int b = 0; b < values.length; b++) {
-					Card newCard = new Card(ranks[i], suits[a], values[b]);
-					cards[num] = newCard;
-					num++;
-				}
+				Card newCard = new Card(ranks[i], suits[a], values[i]);
+				cards[num] = newCard;
+				num++;
 			}
 		}
+	
 		size = cards.length;
+		shuffle();
 		
 	}
 
@@ -72,6 +73,19 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		Card[] shuffled = new Card[size];
+		for (int k = size - 1 ; k >= 0; k-- ) {
+			int range = size;
+			int rand = (int)(Math.random()*range);
+			if (shuffled[rand] == null) {
+				shuffled[rand] = cards[k];
+			}
+			else {
+				k = k + 1;
+			}
+		}
+		cards = shuffled;
+		
 	}
 
 	/**
