@@ -20,7 +20,7 @@ public class Block implements Locatable
 		yPos = 100;
 		width = 30;
 		height = 50;
-		color = Color.GREEN;
+		color = Color.BLACK;
 	}
 
 	//add other Block constructors - x , y , width, height, color
@@ -28,14 +28,14 @@ public class Block implements Locatable
 		setPos(x,y);
 		width = 30;
 		height = 50;
-		color = Color.GREEN;
+		color = Color.BLACK;
 	}
 	
 	public Block(int x, int y, int width) {
 		setPos(x , y);
 		setWidth(width);
 		height = 50;
-		color = Color.GREEN;
+		color = Color.BLACK;
 		
 	}
 	
@@ -43,7 +43,7 @@ public class Block implements Locatable
 		setPos(x,y);
 		setWidth(width);
 		setHeight(height);
-		color = Color.GREEN;
+		color = Color.BLACK;
 	}
 	
 	public Block(int x, int y, int width, int height, Color color) {

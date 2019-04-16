@@ -1,4 +1,4 @@
-//(c) A+ Computer Science
+	//(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
 
@@ -15,7 +15,7 @@ public class Word implements Comparable<Word>
 
 	public int compareTo( Word rhs )
 	{		
-		int num = word.length() - rhs.toString().length();
+		int num = rhs.toString().length() - word.length();
 		if(num == 0) {
 			num = word.compareTo(rhs.toString());
 		}

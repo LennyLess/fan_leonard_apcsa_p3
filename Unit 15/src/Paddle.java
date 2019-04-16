@@ -23,9 +23,9 @@ public class Paddle extends Block
 	   speed = 5;
    }
    
-   public Paddle(int x, int y, int width) {
-	   super(x,y,width);
-	   speed = 5;
+   public Paddle(int x, int y, int speed) {
+	   super(x,y);
+	   setSpeed(speed);
    }
    
    public Paddle(int x, int y, int width, int height) {
@@ -54,13 +54,15 @@ public class Paddle extends Block
    
    public void moveUpAndDraw(Graphics window)
    {
-	   setY(getY()+speed);
+	   draw(window, Color.WHITE);
+	   setY(getY()-speed);
 	   draw(window);
    }
 
    public void moveDownAndDraw(Graphics window)
    {
-	   setY(getY()-speed);
+	   draw(window, Color.WHITE);
+	   setY(getY()+speed);
 	   draw(window);
    }
 
@@ -71,4 +73,8 @@ public class Paddle extends Block
    
    
    //add a toString() method
+	public String toString() {
+		String output =super.toString()+"," + getSpeed();
+		return output;
+	}
 }
