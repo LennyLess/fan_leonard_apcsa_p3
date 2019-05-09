@@ -1,7 +1,3 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
-
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,60 +8,34 @@ public class Ball extends Block
 
 	public Ball()
 	{
-		super(200,200);
-		xSpeed = 3;
-		ySpeed = 1;
+		super(100,100);
+		xSpeed=3;
+		ySpeed=1;
 	}
 
 	//add the other Ball constructors
-	public Ball(int x, int y) {
-		super(x,y);
-		xSpeed = 3;
-		ySpeed = 1;
+	public Ball(int x, int y){
+		super (x,y);
+		xSpeed=3;
+		ySpeed=1;
+	}
+	public Ball(int x, int y, int wid, int ht){
+		super (x,y,wid,ht);
+		xSpeed=3;
+		ySpeed=1;
+	}
+	public Ball(int x, int y, int wid, int ht, Color col){
+		super (x,y,wid,ht,col);
+		xSpeed=3;
+		ySpeed=1;
+	}
+	public Ball(int x, int y, int wid, int ht, Color col, int xS, int yS){
+		super(x,y,wid,ht,col);
+		setXSpeed(xS);
+		setYSpeed(yS);
 	}
 	
-	public Ball(int x, int y, int width) {
-		super(x,y,width);
-		xSpeed = 3;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height) {
-		super(x,y,width,height);
-		xSpeed = 3;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, int xSpeed) {
-		super(x,y,width,height);
-		setXSpeed(xSpeed);
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, int xSpeed, int ySpeed) {
-		super(x,y,width,height);
-		setXSpeed(xSpeed);
-		setYSpeed(ySpeed);
-	}
-	
-	public Ball(int x, int y, int width, int height, Color color) {
-		super(x,y,width,height,color);
-		xSpeed = 3;
-		ySpeed = 1;
-	}	
-	
-	public Ball(int x, int y, int width, int height, Color color, int xSpeed) {
-		super(x,y,width,height,color);
-		setXSpeed(xSpeed);
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, Color color, int xSpeed, int ySpeed) {
-		super(x,y,width,height,color);
-		setXSpeed(xSpeed);
-		setYSpeed(ySpeed);
-	}
-	
+	   
    //add the set methods
 	public void setXSpeed(int x) {
 		xSpeed = x;
@@ -76,25 +46,23 @@ public class Ball extends Block
 	}
    
 
-   public void moveAndDraw(Graphics window)
-   {
-   	//draw a white ball at old ball location
-	   draw(window, Color.WHITE);
-
-      setX(getX()+xSpeed);
-		//setY
-      setY(getY()+ySpeed);
-		//draw the ball at its new location
-      draw(window);
-   }
+	public void moveAndDraw(Graphics window)
+	   {
+	   	//draw a white ball at old ball location
+		   draw(window,Color.WHITE);
+	      setX(getX()+xSpeed);
+			//setY
+	      setY(getY()+ySpeed);
+			//draw the ball at its new location
+	      draw(window);
+	      
+	   }
    
 	public boolean equals(Object obj)
 	{
-		Ball a = (Ball) obj;
-		if(equals(obj) && xSpeed == a.getXSpeed() && ySpeed == a.getYSpeed()) {
-			return true;
-		}
-		return false;
+		Ball other = (Ball) obj;
+		return (this.getX()==other.getX() && this.getY()==other.getY() && this.getWidth()==other.getWidth() && this.getHeight()==other.getHeight()
+				&& xSpeed==other.getXSpeed() && ySpeed==other.getYSpeed());
 	}   
 
    //add the get methods
@@ -105,42 +73,61 @@ public class Ball extends Block
 	public int getYSpeed() {
 		return ySpeed;
 	}
-
    //add a toString() method
 	public String toString() {
-		String output = getX() + "," + getY() + "," + getWidth() + "," + getHeight() + "," + getColor().toString() + "," + xSpeed + "," + ySpeed;
-		return output;
+		return "x: "+getX()+" y: "+getY()+" width: "+getWidth()+" height: "+getHeight()+" color: "+getColor()+" xSpeed: "+getXSpeed()+" ySpeed:."
+				+ " "+getYSpeed();
 	}
+	
+
 	public boolean didCollideLeft(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getX()<=paddle.getX()+paddle.getWidth()&&getX()>paddle.getX()&&(getY()>=paddle.getY() && getY()<=paddle.getY()+paddle.getHeight())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getX() <= (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() > (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()>=(other.getX())
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
 	}
 
 	public boolean didCollideRight(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getX()+getWidth()>=paddle.getX()&&getX()<paddle.getX()&&(getY()>=paddle.getY() && getY()<=paddle.getY()+paddle.getHeight())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getX() < (other.getX() + other.getWidth() + Math.abs(getXSpeed()))
+				&& getX() >= (other.getX() - getWidth() - Math.abs(getXSpeed()))
+				&& getX()<=other.getX()+other.getWidth()
+				&& getY()<=(other.getY()+other.getHeight())
+				&& (getY()+getHeight())>=other.getY());
 	}
 
 	public boolean didCollideTop(Object obj) {
-		Paddle paddle = (Paddle)obj;
-		if (getY()+getHeight()>=paddle.getY() && getY() < paddle.getY()+paddle.getHeight() && (getX()>=paddle.getX() && getX()+getWidth()<=paddle.getX()+paddle.getWidth())){
-			return true;
-		}
-		return false;
+		Block other = (Block)obj;
+		return (getY() >= (other.getY() - getHeight() - Math.abs(getYSpeed()))
+				&& getY() < (other.getY() + other.getHeight() + Math.abs(getYSpeed())) 
+				&& (getX()>=other.getX()
+				&& getX()<=(other.getX()+other.getWidth())
+				&& (getX()+getWidth())>=other.getX()
+				&& (getX()+getWidth())<=other.getX()+other.getWidth()));
 	}
 
 	public boolean didCollideBottom(Object obj) {
-		Paddle paddle = (Paddle) obj;
-		if (getY()+getHeight()>paddle.getY() && getY() <= paddle.getY()+paddle.getHeight() && (getX()>=paddle.getX() && getX()+getWidth()<=paddle.getX()+paddle.getWidth())){
-					return true;			
-				}
-		return false;
+		Block other = (Block)obj;
+		return (getY() > (other.getY() - getHeight() - Math.abs(getYSpeed()))
+				&& getY() <= (other.getY() + other.getHeight() + Math.abs(getYSpeed())) 
+				&& (getX()>=other.getX()
+				&& getX()<=(other.getX()+other.getWidth())
+				&& (getX()+getWidth())>=other.getX()
+				&& (getX()+getWidth())<=other.getX()+other.getWidth()));
 	}
-	
+	/* if(  (ball’s x <=  left paddle’s x +left paddle’s width+abs(ball x Spd)
+         &&
+         ( balls’s y >= left paddle’s y &&
+         balls’s y <= left paddle’s y + left paddle’s height  ||
+         ball’s y + ball’s height >= left paddle’s y &&
+         ball’s y + ball’s height  < left paddle’s y + paddle’s height )  )
+{
+   if(  balls’s x   <=   left paddle’s x +left paddle’s width – abs(ball x Spd )
+       set Y speed to negative of current speed
+   else
+       set X speed to negative of current speed
+}
+*/
 }
