@@ -184,7 +184,7 @@ public class PongExtension extends Canvas implements KeyListener, Runnable
 				//set up all variables related to the game
 				graphToBack.setColor(Color.WHITE);
 				graphToBack.drawRect(mainPaddle.getX(), mainPaddle.getY(), mainPaddle.getWidth(), mainPaddle.getHeight());
-				ball = new Ball(350, 200);
+				ball = new Ball(100, 100);
 				mainPaddle = new PaddleExtension(375, 275, 50, 50, Color.BLUE, 2);
 				//blocks on the left
 				for (int x = 5; x < 85; x += 40) {
@@ -214,7 +214,6 @@ public class PongExtension extends Canvas implements KeyListener, Runnable
 				}
 				played = true;
 				graphToBack.setColor(Color.BLUE);
-				graphToBack.drawString("Level 2!", 400, 300);
 			}
 			else {
 				ball.setXSpeed(0);
